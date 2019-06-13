@@ -128,11 +128,17 @@ class MiKitchenWaterPurifierSensor(Entity):
     @property
     def icon(self):
         """返回传感器对应图标"""
-        if self._data_key['key'] is TAP_WATER_QUALITY['key'] or \
-            self._data_key['key'] is FILTERED_WATER_QUALITY['key']:
-            return 'mdi:water'
-        else:
+        if self._data_key['key'] is PP_COTTON_FILTER_REMAINING_DAYS['key'] or \
+            self._data_key['key'] is FRONT_ACTIVE_CARBON_FILTER_REMAINING_DAYS['key'] or \
+            self._data_key['key'] is RO_FILTER_REMAINING_DAYS['key'] or \
+            self._data_key['key'] is REAR_ACTIVE_CARBON_FILTER_REMAINING_DAYS['key'] or \
+            self._data_key['key'] is PP_COTTON_FILTER_REMAINING_PERCENT['key'] or \
+            self._data_key['key'] is FRONT_ACTIVE_CARBON_FILTER_REMAINING_PERCENT['key'] or \
+            self._data_key['key'] is RO_FILTER_REMAINING_PERCENT['key'] or \
+            self._data_key['key'] is REAR_ACTIVE_CARBON_FILTER_REMAINING_PERCENT['key']:
             return 'mdi:filter-outline'
+        else:
+            return 'mdi:water'
 
     @property
     def state(self):

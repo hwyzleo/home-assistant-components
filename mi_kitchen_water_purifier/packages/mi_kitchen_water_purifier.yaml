@@ -1,0 +1,5 @@
+sensor:
+  - platform: mi_kitchen_water_purifier
+    host: 你获取的IP
+    token: 你获取的Token
+    name: 你自定义的名称
