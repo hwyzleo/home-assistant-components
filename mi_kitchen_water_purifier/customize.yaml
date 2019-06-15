@@ -18,7 +18,7 @@ sensor.mi_kitchen_water_purifier_pp_cotton_filter_total_hours:
 sensor.mi_kitchen_water_purifier_front_active_carbon_filter_purified_liters:
   friendly_name: 净水器前置活性炭滤芯已净水量
 sensor.mi_kitchen_water_purifier_front_active_carbon_filter_purified_hours:
-  friendly_name: 净水器前置活性炭滤芯剩余天数
+  friendly_name: 净水器前置活性炭滤芯已净水小时数
 sensor.mi_kitchen_water_purifier_front_active_carbon_filter_remaining_days:
   friendly_name: 净水器前置活性炭滤芯剩余天数
 sensor.mi_kitchen_water_purifier_front_active_carbon_filter_remaining_percent:

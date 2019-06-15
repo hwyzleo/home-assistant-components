@@ -77,6 +77,7 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     try:
         device = Device(host, token)
         waterPurifier = MiKitchenWaterPurifier(device, name)
+        devices.append(waterPurifier)
         devices.append(MiKitchenWaterPurifierSensor(waterPurifier, TAP_WATER_QUALITY))
         devices.append(MiKitchenWaterPurifierSensor(waterPurifier, FILTERED_WATER_QUALITY))
         devices.append(MiKitchenWaterPurifierSensor(waterPurifier, PP_COTTON_FILTER_PURIFIED_LITERS))
@@ -128,15 +129,25 @@ class MiKitchenWaterPurifierSensor(Entity):
     @property
     def icon(self):
         """返回传感器对应图标"""
-        if self._data_key['key'] is PP_COTTON_FILTER_REMAINING_DAYS['key'] or \
-            self._data_key['key'] is FRONT_ACTIVE_CARBON_FILTER_REMAINING_DAYS['key'] or \
-            self._data_key['key'] is RO_FILTER_REMAINING_DAYS['key'] or \
-            self._data_key['key'] is REAR_ACTIVE_CARBON_FILTER_REMAINING_DAYS['key'] or \
-            self._data_key['key'] is PP_COTTON_FILTER_REMAINING_PERCENT['key'] or \
+        if self._data_key['key'] is PP_COTTON_FILTER_REMAINING_PERCENT['key'] or \
             self._data_key['key'] is FRONT_ACTIVE_CARBON_FILTER_REMAINING_PERCENT['key'] or \
             self._data_key['key'] is RO_FILTER_REMAINING_PERCENT['key'] or \
             self._data_key['key'] is REAR_ACTIVE_CARBON_FILTER_REMAINING_PERCENT['key']:
-            return 'mdi:filter-outline'
+            return 'mdi:water-percent'
+        if self._data_key['key'] is PP_COTTON_FILTER_REMAINING_DAYS['key'] or \
+            self._data_key['key'] is FRONT_ACTIVE_CARBON_FILTER_REMAINING_DAYS['key'] or \
+            self._data_key['key'] is RO_FILTER_REMAINING_DAYS['key'] or \
+            self._data_key['key'] is REAR_ACTIVE_CARBON_FILTER_REMAINING_DAYS['key']:
+            return 'mdi:calendar-today'
+        if self._data_key['key'] is PP_COTTON_FILTER_PURIFIED_HOURS['key'] or \
+            self._data_key['key'] is FRONT_ACTIVE_CARBON_FILTER_PURIFIED_HOURS['key'] or \
+            self._data_key['key'] is RO_FILTER_PURIFIED_HOURS['key'] or \
+            self._data_key['key'] is REAR_ACTIVE_CARBON_FILTER_PURIFIED_HOURS['key'] or \
+            self._data_key['key'] is PP_COTTON_FILTER_TOTAL_HOURS['key'] or \
+            self._data_key['key'] is FRONT_ACTIVE_CARBON_FILTER_TOTAL_HOURS['key'] or \
+            self._data_key['key'] is RO_FILTER_TOTAL_HOURS['key'] or \
+            self._data_key['key'] is REAR_ACTIVE_CARBON_FILTER_TOTAL_HOURS['key']:
+            return 'mdi:clock-outline'
         else:
             return 'mdi:water'
 
