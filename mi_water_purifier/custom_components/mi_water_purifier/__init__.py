@@ -117,7 +117,7 @@ CONFIG_SCHEMA = vol.Schema({
 
 
 def setup(hass, config):
-    """初始化小下净水器组件"""
+    """初始化小米净水器组件"""
 
     if DOMAIN not in hass.data:
         hass.data[DOMAIN] = {}
@@ -171,10 +171,10 @@ def setup(hass, config):
 
 
 class MiKitchenWaterPurifier(Entity):
-    """小米厨下净水器类"""
+    """小米净水器类"""
 
     def __init__(self, device, name):
-        """初始化小米厨下净水器"""
+        """初始化小米净水器"""
         self._data = None
         self._state = None
         self._device = device
