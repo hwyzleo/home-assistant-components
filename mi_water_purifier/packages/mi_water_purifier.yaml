@@ -1,0 +1,5 @@
+mi_water_purifier:
+  host: 你获取的IP
+  token: 你获取的Token
+  name: 你自定义的名称
+  scan_interval: 更新间隔时间，净水器变化频率不大，建议3600

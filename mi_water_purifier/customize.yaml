@@ -1,0 +1,74 @@
+#==============小米厨下净水器开始=================
+sensor.mi_water_purifier_tap_water_quality:
+  friendly_name: 自来水水质
+sensor.mi_water_purifier_filtered_water_quality:
+  friendly_name: 过滤后水质
+sensor.mi_water_purifier_pp_ctn_fl_purify_liters:
+  friendly_name: 净水器PP棉滤芯已净水量
+  unit_of_measurement: 升
+sensor.mi_water_purifier_pp_ctn_fl_purify_hours:
+  friendly_name: 净水器PP棉滤芯已净水小时数
+  unit_of_measurement: 小时
+sensor.mi_water_purifier_pp_ctn_fl_remaining_days:
+  friendly_name: 净水器PP棉滤芯剩余天数
+  unit_of_measurement: 天
+sensor.mi_water_purifier_pp_ctn_fl_remaining_pct:
+  friendly_name: 净水器PP棉滤芯剩余百分比
+sensor.mi_water_purifier_pp_ctn_fl_ttl_liters:
+  friendly_name: 净水器PP棉滤芯总净水量
+  unit_of_measurement: 升
+sensor.mi_water_purifier_pp_ctn_fl_ttl_hours:
+  friendly_name: 净水器PP棉滤芯总净水小时数
+  unit_of_measurement: 小时
+sensor.mi_water_purifier_front_active_c_fl_purify_liters:
+  friendly_name: 净水器前置活性炭滤芯已净水量
+  unit_of_measurement: 升
+sensor.mi_water_purifier_front_active_c_fl_purify_hours:
+  friendly_name: 净水器前置活性炭滤芯已净水小时数
+  unit_of_measurement: 小时
+sensor.mi_water_purifier_front_active_c_fl_remaining_days:
+  friendly_name: 净水器前置活性炭滤芯剩余天数
+  unit_of_measurement: 天
+sensor.mi_water_purifier_front_active_c_fl_remaining_pct:
+  friendly_name: 净水器前置活性炭滤芯剩余百分比
+sensor.mi_water_purifier_front_active_c_fl_ttl_liters:
+  friendly_name: 净水器前置活性炭滤芯总净水量
+  unit_of_measurement: 升
+sensor.mi_water_purifier_front_active_c_fl_ttl_hours:
+  friendly_name: 净水器前置活性炭滤芯总净水小时数
+  unit_of_measurement: 小时
+sensor.mi_water_purifier_ro_fl_purify_liters:
+  friendly_name: 净水器RO反渗透滤芯已净水量
+  unit_of_measurement: 升
+sensor.mi_water_purifier_ro_fl_purify_hours:
+  friendly_name: 净水器RO反渗透滤芯已净水小时数
+  unit_of_measurement: 小时
+sensor.mi_water_purifier_ro_fl_remaining_days:
+  friendly_name: 净水器RO反渗透滤芯剩余天数
+  unit_of_measurement: 天
+sensor.mi_water_purifier_ro_fl_remaining_pct:
+  friendly_name: 净水器RO反渗透滤芯剩余百分比
+sensor.mi_water_purifier_ro_fl_ttl_liters:
+  friendly_name: 净水器RO反渗透滤芯总净水量
+  unit_of_measurement: 升
+sensor.mi_water_purifier_ro_fl_ttl_hours:
+  friendly_name: 净水器RO反渗透滤芯总净水小时数
+  unit_of_measurement: 小时
+sensor.mi_water_purifier_rear_active_c_fl_purify_liters:
+  friendly_name: 净水器后置活性炭滤芯已净水量
+  unit_of_measurement: 升
+sensor.mi_water_purifier_rear_active_c_fl_purify_hours:
+  friendly_name: 净水器后置活性炭滤芯已净水小时数
+  unit_of_measurement: 小时
+sensor.mi_water_purifier_rear_active_c_fl_remaining_days:
+  friendly_name: 净水器后置活性炭滤芯剩余天数
+  unit_of_measurement: 天
+sensor.mi_water_purifier_rear_active_c_fl_remaining_pct:
+  friendly_name: 净水器后置活性炭滤芯剩余百分比
+sensor.mi_water_purifier_rear_active_c_fl_ttl_liters:
+  friendly_name: 净水器后置活性炭滤芯总净水量
+  unit_of_measurement: 升
+sensor.mi_water_purifier_rear_active_c_fl_ttl_hours:
+  friendly_name: 净水器后置活性炭滤芯总净水小时数
+  unit_of_measurement: 小时
+#==============小米厨下净水器结束=================
