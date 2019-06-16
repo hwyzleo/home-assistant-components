@@ -132,17 +132,16 @@ def setup(hass, config):
         hass.data[DATA_KEY] = {}
         hass.data[DATA_KEY][host] = {}
 
-    if model is None:
-        try:
-            miio_device = Device(host, token)
-            device_info = miio_device.info()
-            model = device_info.model
-            _LOGGER.info("发现净水器设备，型号[%s]，软件版本[%s]，硬件版本[%s]",
-                         model,
-                         device_info.firmware_version,
-                         device_info.hardware_version)
-        except DeviceException:
-            raise PlatformNotReady
+    try:
+        miio_device = Device(host, token)
+        device_info = miio_device.info()
+        model = device_info.model
+        _LOGGER.info("发现净水器设备，型号[%s]，软件版本[%s]，硬件版本[%s]",
+                     model,
+                     device_info.firmware_version,
+                     device_info.hardware_version)
+    except DeviceException:
+        raise PlatformNotReady
 
     if model in SUPPORTED_MODELS:
         water_purifier = MiKitchenWaterPurifier(miio_device, name)
