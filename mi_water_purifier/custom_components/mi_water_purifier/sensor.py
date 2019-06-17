@@ -8,8 +8,9 @@ _LOGGER = logging.getLogger(__name__)
 
 COOKER_DOMAIN = 'mi_water_purifier'
 
+
 def setup_platform(hass, config, add_devices, discovery_info=None):
-    """初始化小米厨下净水器传感器"""
+    """初始化小米净水器传感器"""
 
     if discovery_info is None:
         return
@@ -24,7 +25,7 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
 
 
 class MiWaterPurifierSensor(Entity):
-    """小米厨下净水器传感器类"""
+    """小米净水器传感器类"""
 
     def __init__(self, device, config):
         """初始化传感器"""
