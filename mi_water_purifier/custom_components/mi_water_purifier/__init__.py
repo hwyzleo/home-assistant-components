@@ -144,7 +144,7 @@ def setup(hass, config):
         raise PlatformNotReady
 
     if model in SUPPORTED_MODELS:
-        water_purifier = MiKitchenWaterPurifier(miio_device, name)
+        water_purifier = MiWaterPurifier(miio_device, name)
         hass.data[DOMAIN][host] = water_purifier
         for component in ['sensor']:
             discovery.load_platform(hass, component, DOMAIN, {}, config)
@@ -169,7 +169,7 @@ def setup(hass, config):
     return True
 
 
-class MiKitchenWaterPurifier(Entity):
+class MiWaterPurifier(Entity):
     """小米净水器类"""
 
     def __init__(self, device, name):
