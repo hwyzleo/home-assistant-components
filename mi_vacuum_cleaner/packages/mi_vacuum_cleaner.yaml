@@ -1,7 +1,6 @@
-vacuum:
-  - platform: xiaomi_miio
-    host: 你获取的IP
-    token: 你获取的Token
+mi_vacuum_cleaner:
+  host: 你获取的IP
+  token: 你获取的Token
 
 sensor:
   - platform: template
@@ -54,10 +53,6 @@ sensor:
         unit_of_measurement: '平米'
         icon_template: mdi:floor-plan
         value_template: "{{ state_attr('vacuum.xiaomi_vacuum_cleaner', 'total_cleaned_area') }}"
-      mi_vacuum_cleaner_battery_level:
-        icon_template: mdi:battery-40
-        unit_of_measurement: '%'
-        value_template: "{{ state_attr('vacuum.xiaomi_vacuum_cleaner', 'battery_level') }}"
       mi_vacuum_cleaner_status:
 				icon_template: mdi:battery-charging
         value_template: "{{ state_attr('vacuum.xiaomi_vacuum_cleaner', 'status') }}"

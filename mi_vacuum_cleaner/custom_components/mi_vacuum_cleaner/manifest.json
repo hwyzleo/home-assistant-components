@@ -1,0 +1,8 @@
+{
+  "domain": "mi_vacuum_cleaner",
+  "name": "MI Vacuum Cleaner",
+  "documentation": "https://github.com/hwyzleo/home-assistant-components",
+  "dependencies": [],
+  "codeowners": ["@hwyz_leo"],
+  "requirements": []
+}

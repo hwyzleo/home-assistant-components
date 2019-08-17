@@ -1,17 +1,17 @@
 #==============小米扫地机器人开始=================
-vacuum.xiaomi_vacuum_cleaner:
+vacuum.mi_vacuum_cleaner:
   friendly_name: 小米扫地机器人
   hagenie_deviceType: roboticvacuum
   hagenie_deviceName: 扫地机器人
   hagenie_zone: 客厅
 
-sensor.mi_vacuum_cleaner_filter_left:
+sensor.mi_vacuum_cleaner_consumable_status_filter_left:
   friendly_name: 扫地机滤网更换剩余时间
-sensor.mi_vacuum_cleaner_side_brush_left:
+sensor.mi_vacuum_cleaner_consumable_status_side_brush_left:
   friendly_name: 扫地机边刷更换剩余时间
-sensor.mi_vacuum_cleaner_main_brush_left:
+sensor.mi_vacuum_cleaner_consumable_status_main_brush_left:
   friendly_name: 扫地机主刷更换剩余时间
-sensor.mi_vacuum_cleaner_sensor_dirty_left:
+sensor.mi_vacuum_cleaner_consumable_status_sensor_dirty_left:
   friendly_name: 扫地机传感器清理剩余时间
 sensor.mi_vacuum_cleaner_cleaning_count:
   friendly_name: 扫地机累计清扫次数
@@ -19,7 +19,7 @@ sensor.mi_vacuum_cleaner_total_cleaning_time:
   friendly_name: 扫地机累计清扫时长
 sensor.mi_vacuum_cleaner_total_cleaned_area:
   friendly_name: 扫地机累计清扫区域
-sensor.mi_vacuum_cleaner_battery_level:
+sensor.mi_vacuum_cleaner_status_battery:
   friendly_name: 扫地机剩余电量
 sensor.mi_vacuum_cleaner_status:
   friendly_name: 扫地机充电状态
