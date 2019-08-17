@@ -145,6 +145,7 @@ def setup(hass, config):
 
     if model in SUPPORTED_MODELS:
         water_purifier = MiWaterPurifier(miio_device, name)
+        _LOGGER.info("实例化小米净水器[%s]", name)
         hass.data[DOMAIN][host] = water_purifier
         for component in ['sensor']:
             discovery.load_platform(hass, component, DOMAIN, {}, config)

@@ -1,0 +1,8 @@
+{
+  "domain": "mi_water_purifier",
+  "name": "MI Water Purifier",
+  "documentation": "https://github.com/hwyzleo/home-assistant-components",
+  "dependencies": [],
+  "codeowners": ["@hwyz_leo"],
+  "requirements": []
+}

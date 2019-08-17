@@ -3,10 +3,9 @@ import logging
 
 from homeassistant.helpers.entity import Entity
 from ..mi_water_purifier import SENSOR_TYPES
+from ..mi_water_purifier import DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
-
-COOKER_DOMAIN = 'mi_water_purifier'
 
 
 def setup_platform(hass, config, add_devices, discovery_info=None):
@@ -17,8 +16,9 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
 
     sensors = []
 
-    for host, device in hass.data[COOKER_DOMAIN].items():
+    for host, device in hass.data[DOMAIN].items():
         for sensor_type in SENSOR_TYPES.values():
+            _LOGGER.debug("添加净水器[%s]传感器[%s]", device.name, sensor_type[1])
             sensors.append(MiWaterPurifierSensor(device, sensor_type))
 
     add_devices(sensors)
