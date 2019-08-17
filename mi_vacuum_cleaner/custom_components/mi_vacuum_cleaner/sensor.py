@@ -8,9 +8,9 @@ _LOGGER = logging.getLogger(__name__)
 
 SENSOR_TYPES = {
     'battery': ['status().battery', 'battery', '%', None],
-    'count': ['clean_history().count', None, None, None],
+    'count': ['clean_history().count', 'robot-vacuum', None, None],
     'total_duration': ['clean_history().total_duration', 'clock-outline', 'H', 'hours'],
-    'total_area': ['clean_history().total_area', None, 'M²', 'meter'],
+    'total_area': ['clean_history().total_area', 'floor-plan', 'M²', 'meter'],
     'main_brush': ['consumable_status().main_brush', 'clock-outline', 'H', 'hours'],
     'main_brush_left': ['consumable_status().main_brush_left', 'clock-outline', 'H', 'hours'],
     'side_brush': ['consumable_status().side_brush', 'clock-outline', 'H', 'hours'],
