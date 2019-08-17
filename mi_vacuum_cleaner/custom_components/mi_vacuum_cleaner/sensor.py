@@ -7,13 +7,18 @@ from ..mi_vacuum_cleaner import DOMAIN
 _LOGGER = logging.getLogger(__name__)
 
 SENSOR_TYPES = {
-    'battery': ['status().battery', 'battery', '%'],
-    'fanspeed': ['status().fanspeed', 'fan', None],
-    'main_brush': ['consumable_status().main_brush', None, None],
-    'main_brush_left': ['consumable_status().main_brush_left', 'clock-outline', None],
-    'side_brush_left': ['consumable_status().side_brush_left', 'clock-outline', None],
-    'filter_left': ['consumable_status().filter_left', 'clock-outline', None],
-    'sensor_dirty_left': ['consumable_status().sensor_dirty_left', 'clock-outline', None],
+    'battery': ['status().battery', 'battery', '%', None],
+    'count': ['clean_history().count', None, None, None],
+    'total_duration': ['clean_history().total_duration', 'clock-outline', 'H', 'hours'],
+    'total_area': ['clean_history().total_area', None, 'M²', 'meter'],
+    'main_brush': ['consumable_status().main_brush', 'clock-outline', 'H', 'hours'],
+    'main_brush_left': ['consumable_status().main_brush_left', 'clock-outline', 'H', 'hours'],
+    'side_brush': ['consumable_status().side_brush', 'clock-outline', 'H', 'hours'],
+    'side_brush_left': ['consumable_status().side_brush_left', 'clock-outline', 'H', 'hours'],
+    'filter': ['consumable_status().filter', 'clock-outline', 'H', 'hours'],
+    'filter_left': ['consumable_status().filter_left', 'clock-outline', 'H', 'hours'],
+    'sensor_dirty': ['consumable_status().sensor_dirty', 'clock-outline', 'H', 'hours'],
+    'sensor_dirty_left': ['consumable_status().sensor_dirty_left', 'clock-outline', 'H', 'hours'],
 }
 
 
@@ -45,6 +50,7 @@ class MiVacuumCleanerSensor(Entity):
         self._name = config[0]
         self._icon = config[1]
         self._unit = config[2]
+        self._handle = config[3]
         self.parse_data()
 
     @property
@@ -77,7 +83,15 @@ class MiVacuumCleanerSensor(Entity):
         return attrs
 
     def parse_data(self):
-        self._state = eval("self._device." + self._name)
+        try:
+            self._state = eval("self._device." + self._name)
+            if self._handle is not None:
+                if self._handle == 'hours':
+                    self._state = self._state.days * 24 + int(self._state.seconds / 3600)
+                if self._handle == 'meter':
+                    self._state = int(self._state)
+        except Exception as e:
+            _LOGGER.warning("获取扫地机传感器[%s]异常[%s]", self._name, e)
 
     def update(self):
         """更新数据"""
