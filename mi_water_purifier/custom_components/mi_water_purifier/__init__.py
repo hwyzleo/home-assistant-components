@@ -221,18 +221,34 @@ class MiWaterPurifier(Entity):
                 if sensor_type[0] is not None:
                     data[sensor_type[2]] = status[int(sensor_type[0])]
 
-            data[PP_CTN_FL_REMAINING_DAYS] = int((data[PP_CTN_FL_TTL_HOURS] - data[PP_CTN_FL_PURIFY_HOURS]) / 24)
-            data[PP_CTN_FL_REMAINING_PCT] = math.floor(
+            if data[PP_CTN_FL_TTL_HOURS] - data[PP_CTN_FL_PURIFY_HOURS] <= 0:
+                data[PP_CTN_FL_REMAINING_DAYS] = 0
+                data[PP_CTN_FL_REMAINING_PCT] = 0
+            else:
+                data[PP_CTN_FL_REMAINING_DAYS] = int((data[PP_CTN_FL_TTL_HOURS] - data[PP_CTN_FL_PURIFY_HOURS]) / 24)
+                data[PP_CTN_FL_REMAINING_PCT] = math.floor(
                 data[PP_CTN_FL_REMAINING_DAYS] * 24 * 100 / data[PP_CTN_FL_TTL_HOURS])
-            data[FRONT_ACTIVE_C_FL_REMAINING_DAYS] = int(
+            if data[FRONT_ACTIVE_C_FL_TTL_HOURS] - data[FRONT_ACTIVE_C_FL_PURIFY_HOURS] <= 0:
+                data[FRONT_ACTIVE_C_FL_REMAINING_DAYS] = 0
+                data[FRONT_ACTIVE_C_FL_REMAINING_PCT] = 0
+            else:
+                data[FRONT_ACTIVE_C_FL_REMAINING_DAYS] = int(
                 (data[FRONT_ACTIVE_C_FL_TTL_HOURS] - data[FRONT_ACTIVE_C_FL_PURIFY_HOURS]) / 24)
-            data[FRONT_ACTIVE_C_FL_REMAINING_PCT] = math.floor(
+                data[FRONT_ACTIVE_C_FL_REMAINING_PCT] = math.floor(
                 data[FRONT_ACTIVE_C_FL_REMAINING_DAYS] * 24 * 100 / data[FRONT_ACTIVE_C_FL_TTL_HOURS])
-            data[RO_FL_REMAINING_DAYS] = int((data[RO_FL_TTL_HOURS] - data[RO_FL_PURIFY_HOURS]) / 24)
-            data[RO_FL_REMAINING_PCT] = math.floor(data[RO_FL_REMAINING_DAYS] * 24 * 100 / data[RO_FL_TTL_HOURS])
-            data[REAR_ACTIVE_C_FL_REMAINING_DAYS] = int(
+            if data[RO_FL_TTL_HOURS] - data[RO_FL_PURIFY_HOURS] <= 0:
+                data[RO_FL_REMAINING_DAYS] = 0
+                data[RO_FL_REMAINING_PCT] = 0
+            else:
+                data[RO_FL_REMAINING_DAYS] = int((data[RO_FL_TTL_HOURS] - data[RO_FL_PURIFY_HOURS]) / 24)
+                data[RO_FL_REMAINING_PCT] = math.floor(data[RO_FL_REMAINING_DAYS] * 24 * 100 / data[RO_FL_TTL_HOURS])
+            if data[REAR_ACTIVE_C_FL_TTL_HOURS] - data[REAR_ACTIVE_C_FL_PURIFY_HOURS] <= 0:
+                data[REAR_ACTIVE_C_FL_REMAINING_DAYS] = 0
+                data[REAR_ACTIVE_C_FL_REMAINING_PCT] = 0
+            else:
+                data[REAR_ACTIVE_C_FL_REMAINING_DAYS] = int(
                 (data[REAR_ACTIVE_C_FL_TTL_HOURS] - data[REAR_ACTIVE_C_FL_PURIFY_HOURS]) / 24)
-            data[REAR_ACTIVE_C_FL_REMAINING_PCT] = math.floor(
+                data[REAR_ACTIVE_C_FL_REMAINING_PCT] = math.floor(
                 data[REAR_ACTIVE_C_FL_REMAINING_DAYS] * 24 * 100 / data[REAR_ACTIVE_C_FL_TTL_HOURS])
 
             self._data = data
