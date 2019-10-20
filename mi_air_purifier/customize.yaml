@@ -20,11 +20,4 @@ sensor.mi_air_purifier_status_filter_life_remaining:
 sensor.mi_air_purifier_status_filter_hours_used:
   friendly_name: 客厅空净滤芯已用时间
   unit_of_measurement: 小时
-
-mi_air_purifier.on:
-  friendly_name: 打开客厅空气净化器
-mi_air_purifier.off:
-  friendly_name: 关闭客厅空气净化器
-mi_air_purifier.set_mode:
-  friendly_name: 设置客厅空气净化器模式
 #==============小米空气净化器结束=================
