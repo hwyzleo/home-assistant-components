@@ -1,0 +1,8 @@
+{
+  "domain": "mi_air_purifier",
+  "name": "MI Air Purifier",
+  "documentation": "https://github.com/hwyzleo/home-assistant-components",
+  "dependencies": [],
+  "codeowners": ["@hwyz_leo"],
+  "requirements": []
+}
