@@ -31,12 +31,12 @@ class MiAirPurifierEntity(Entity):
 
     @property
     def name(self):
-        """Return the default name of the binary sensor."""
+        """返回传感器名称"""
         return self._name
 
     @property
     def unique_id(self):
-        """Return an unique identifier for this entity."""
+        """返回实体唯一值"""
         return self._unique_id
 
     @property
@@ -46,4 +46,4 @@ class MiAirPurifierEntity(Entity):
     @property
     def should_poll(self):
         """Return False because entity pushes its state to HA."""
-        return False
+        return True

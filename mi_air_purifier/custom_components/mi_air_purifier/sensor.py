@@ -7,7 +7,7 @@ from ..mi_air_purifier import DOMAIN
 _LOGGER = logging.getLogger(__name__)
 
 SENSOR_TYPES = {
-    'power': ['status().power', 'battery', '%', None],
+    'power': ['status().power', 'battery', '', None],
     'aqi': ['status().aqi', 'air-filter', '', None],
     'temperature': ['status().temperature', 'home-thermometer', '°C', None],
     'humidity': ['status().humidity', 'water-percent', '%', None],

@@ -113,9 +113,15 @@ def setup(hass, config):
         mode = call.data.get("mode", "auto")
         air_purifier.set_mode(OperationMode(mode))
 
+    def set_led_service(call):
+        """设置LED"""
+        led = call.data.get("led", True)
+        air_purifier.set_led(led)
+
     """注册服务"""
     hass.services.register(DOMAIN, 'on', on_service)
     hass.services.register(DOMAIN, 'off', off_service)
     hass.services.register(DOMAIN, 'set_mode', set_mode_service)
+    hass.services.register(DOMAIN, 'set_led', set_led_service)
 
     return True

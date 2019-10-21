@@ -14,6 +14,7 @@
 - 打开空气净化器
 - 关闭空气净化器
 - 设置空气净化器模式
+- 设置空气净化器LED
 
 ![Screenshot1](./images/screenshot1.png)
 
