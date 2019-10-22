@@ -44,17 +44,6 @@ CONFIG_SCHEMA = vol.Schema({
 
 ATTR_PROFILE = 'profile'
 
-SERVICE_SCHEMA = vol.Schema({
-
-})
-
-SERVICE_SCHEMA_START = SERVICE_SCHEMA.extend({
-    vol.Required(ATTR_PROFILE): cv.string,
-})
-
-SERVICE_START = 'start'
-SERVICE_STOP = 'stop'
-
 
 def setup(hass, config):
     """初始化小米扫地机器人组件"""
@@ -113,13 +102,20 @@ def setup(hass, config):
     track_time_interval(hass, update, scan_interval)
 
     def start_service(call):
+        """启动扫地机"""
         vacuum_cleaner.start()
 
     def stop_service(call):
+        """停止扫地机"""
         vacuum_cleaner.stop()
 
-    hass.services.register(DOMAIN, SERVICE_START, start_service, schema=SERVICE_SCHEMA_START)
+    def home_service(call):
+        """停止并返回充电"""
+        vacuum_cleaner.home()
 
-    hass.services.register(DOMAIN, SERVICE_STOP, stop_service, schema=SERVICE_SCHEMA)
+    """注册服务"""
+    hass.services.register(DOMAIN, "start", start_service)
+    hass.services.register(DOMAIN, "stop", stop_service)
+    hass.services.register(DOMAIN, "home", home_service)
 
     return True

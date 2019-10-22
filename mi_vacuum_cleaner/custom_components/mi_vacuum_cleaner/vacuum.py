@@ -46,4 +46,4 @@ class MiVacuumCleanerEntity(Entity):
     @property
     def should_poll(self):
         """Return False because entity pushes its state to HA."""
-        return False
+        return True

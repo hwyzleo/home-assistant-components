@@ -7,6 +7,7 @@ from ..mi_vacuum_cleaner import DOMAIN
 _LOGGER = logging.getLogger(__name__)
 
 SENSOR_TYPES = {
+    'state': ['status().state', 'state-machine', '', None],
     'battery': ['status().battery', 'battery', '%', None],
     'count': ['clean_history().count', 'robot-vacuum', None, None],
     'total_duration': ['clean_history().total_duration', 'clock-outline', 'H', 'hours'],
