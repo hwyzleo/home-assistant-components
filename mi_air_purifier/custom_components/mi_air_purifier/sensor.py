@@ -1,6 +1,7 @@
 """小米空气净化器组件传感器"""
 import logging
 
+from homeassistant.const import CONF_NAME
 from homeassistant.helpers.entity import Entity
 from ..mi_air_purifier import DOMAIN
 
@@ -23,12 +24,11 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     if discovery_info is None:
         _LOGGER.info("没有传感器需要被发现")
         return
-
     sensors = []
     for host, device in hass.data[DOMAIN].items():
         for key in SENSOR_TYPES.keys():
             _LOGGER.debug("添加传感器[%s]", key)
-            sensors.append(MiAirPurifierSensor(device, SENSOR_TYPES[key]))
+            sensors.append(MiAirPurifierSensor(hass.data[CONF_NAME][host], device, SENSOR_TYPES[key]))
 
     add_devices(sensors)
 
@@ -36,11 +36,12 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
 class MiAirPurifierSensor(Entity):
     """小米空气净化器传感器类"""
 
-    def __init__(self, device, config):
+    def __init__(self, name, device, config):
         """初始化传感器"""
         self._state = None
         self._data = None
         self._device = device
+        self._id = name + "_"
         self._name = config[0]
         self._icon = config[1]
         self._unit = config[2]
@@ -50,7 +51,7 @@ class MiAirPurifierSensor(Entity):
     @property
     def name(self):
         """返回传感器名称"""
-        return 'mi_air_purifier_' + self._name
+        return self._id + self._name
 
     @property
     def icon(self):

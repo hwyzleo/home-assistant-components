@@ -9,10 +9,9 @@ from homeassistant.exceptions import PlatformNotReady
 from homeassistant.helpers import discovery
 from homeassistant.helpers.event import track_time_interval
 from homeassistant.helpers.dispatcher import dispatcher_send
-from homeassistant.helpers.entity import Entity
 from homeassistant.util.dt import utcnow
-from miio import Device, DeviceException, AirPurifier, VacuumException
-from miio.airpurifier import OperationMode
+from miio import Device, DeviceException, AirPurifier
+from miio.airpurifier import OperationMode, AirPurifierException
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -48,11 +47,14 @@ def setup(hass, config):
     """初始化小米空气净化器组件"""
 
     if DOMAIN not in hass.data:
+        hass.data[CONF_NAME] = {}
         hass.data[DOMAIN] = {}
 
     host = config[DOMAIN][CONF_HOST]
     token = config[DOMAIN][CONF_TOKEN]
     name = config[DOMAIN][CONF_NAME]
+    if name is None or len(name) == 0:
+        name = DEFAULT_NAME
     model = config[DOMAIN].get(CONF_MODEL)
     scan_interval = config[DOMAIN][CONF_SCAN_INTERVAL]
 
@@ -62,6 +64,7 @@ def setup(hass, config):
 
     if model is None:
         try:
+            _LOGGER.info("未指定空气净化器类型，自动检测设备类型")
             miio_device = Device(host, token)
             device_info = miio_device.info()
             model = device_info.model
@@ -74,14 +77,15 @@ def setup(hass, config):
     if model in SUPPORTED_MODELS:
         try:
             air_purifier = AirPurifier(host, token)
-            _LOGGER.info("实例化空气净化器[%s]成功", model)
+            _LOGGER.info("实例化空气净化器[%s]成功", name)
+            hass.data[CONF_NAME][host] = name
             hass.data[DOMAIN][host] = air_purifier
 
-            for component in ['fan', 'sensor']:
+            for component in ['sensor']:
                 _LOGGER.debug("加载组件[%s]", component)
                 discovery.load_platform(hass, component, DOMAIN, {}, config)
-        except VacuumException:
-            _LOGGER.error("实例化空气净化器[%s]异常", model)
+        except AirPurifierException as ape:
+            _LOGGER.error("实例化空气净化器[%s]异常[%s]", name, ape)
             raise PlatformNotReady
     else:
         _LOGGER.error("未支持设备型号[%s]", model)
