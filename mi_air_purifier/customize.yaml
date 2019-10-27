@@ -2,9 +2,9 @@
 sensor.living_room_air_purifier_status_power:
   friendly_name: 客厅空净状态
 sensor.living_room_air_purifier_status_aqi:
-  friendly_name: 客厅空气质量
+  friendly_name: 客厅PM2.5
 sensor.living_room_air_purifier_status_average_aqi:
-  friendly_name: 客厅平均空气质量
+  friendly_name: 客厅平均PM2.5
 sensor.living_room_air_purifier_status_humidity:
   friendly_name: 客厅湿度
   device_class: humidity
@@ -19,5 +19,5 @@ sensor.living_room_air_purifier_status_filter_hours_used:
   unit_of_measurement: 小时
 sensor.living_room_air_purifier_status_use_time:
   friendly_name: 客厅空净已运行时间
-  unit_of_measurement: 小时
+  unit_of_measurement: 天
 #==============小米空气净化器结束=================

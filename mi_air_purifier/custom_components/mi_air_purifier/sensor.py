@@ -16,7 +16,7 @@ SENSOR_TYPES = {
     'illuminance': ['status().illuminance', 'white-balance-sunny', '', None],
     'filter_life_remaining': ['status().filter_life_remaining', 'timer-sand', '%', None],
     'filter_hours_used': ['status().filter_hours_used', 'timelapse', 'H', None],
-    'use_time': ['status().use_time', 'timelapse', 'H', None],
+    'use_time': ['status().use_time', 'calendar-range', 'D', 'secondToDay'],
 }
 
 
@@ -83,10 +83,8 @@ class MiAirPurifierSensor(Entity):
         try:
             self._state = eval("self._device." + self._name)
             if self._handle is not None:
-                if self._handle == 'hours':
-                    self._state = self._state.days * 24 + int(self._state.seconds / 3600)
-                if self._handle == 'meter':
-                    self._state = int(self._state)
+                if self._handle == 'secondToDay':
+                    self._state = int(self._state / (60 * 60 * 24))
         except Exception as e:
             _LOGGER.warning("获取空气净化器传感器[%s]异常[%s]", self._name, e)
 
