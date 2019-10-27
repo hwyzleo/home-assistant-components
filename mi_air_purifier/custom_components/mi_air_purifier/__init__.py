@@ -18,7 +18,7 @@ _LOGGER = logging.getLogger(__name__)
 REQUIREMENTS = ['python-miio>=0.3.1']
 
 DEFAULT_NAME = 'mi_air_purifier'
-DEFAULT_SCAN_INTERVAL = timedelta(seconds=30)
+DEFAULT_SCAN_INTERVAL = timedelta(seconds=300)
 
 DOMAIN = 'mi_air_purifier'
 CONF_MODEL = 'model'

@@ -9,12 +9,14 @@ _LOGGER = logging.getLogger(__name__)
 
 SENSOR_TYPES = {
     'power': ['status().power', 'battery', '', None],
-    'aqi': ['status().aqi', 'air-filter', '', None],
+    'aqi': ['status().aqi', 'air-filter', 'μg/m³', None],
+    'average_aqi': ['status().average_aqi', 'air-filter', 'μg/m³', None],
     'temperature': ['status().temperature', 'home-thermometer', '°C', None],
     'humidity': ['status().humidity', 'water-percent', '%', None],
     'illuminance': ['status().illuminance', 'white-balance-sunny', '', None],
     'filter_life_remaining': ['status().filter_life_remaining', 'timer-sand', '%', None],
     'filter_hours_used': ['status().filter_hours_used', 'timelapse', 'H', None],
+    'use_time': ['status().use_time', 'timelapse', 'H', None],
 }
 
 
