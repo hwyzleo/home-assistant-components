@@ -88,7 +88,10 @@ class MiVacuumCleanerSensor(Entity):
             self._state = eval("self._device." + self._name)
             if self._handle is not None:
                 if self._handle == 'hours':
-                    self._state = self._state.days * 24 + int(self._state.seconds / 3600)
+                    if self._state.days >= 0:
+                        self._state = self._state.days * 24 + int(self._state.seconds / 3600)
+                    else:
+                        self._state = 0
                 if self._handle == 'meter':
                     self._state = int(self._state)
         except Exception as e:
